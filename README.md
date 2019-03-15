@@ -35,6 +35,11 @@ func main() {
 
 This example will print out at each iteration, slowly increasing over time.
 
+## To Do
+* [ ] Implement `AllowN`
+* [ ] Implement `ReserveN`
+* [ ] Handle cancellations and deadlines properly.
+
 ## License
 
 Copyright © 2019 Trevor Hutto
