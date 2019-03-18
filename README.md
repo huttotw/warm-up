@@ -5,11 +5,13 @@ custom function with which to calculate the rate at every token. Please see the 
 terminology used here, especially _Limiter_, _tokens_, and _bucket_.
 
 ### Use cases:
+
 - Sending lots of requests to a system, but you want to give the system a chance to auto-scale.
 - Warming up a load balancer to be ready to handle a lot of requests.
 - Gradually increasing load to a system.
 
 ## Example
+
 ```go
 func main() {
 	fmt.Println("starting...")
@@ -22,6 +24,7 @@ func main() {
 	// Create a new limiter that will increase in throughput according to (x/10)^2,
 	// with a burst up to 0 tokens.
 	l := warmup.NewLimiter(f, 0)
+	defer l.Stop()
 
 	i := 0
 	for {
@@ -36,9 +39,10 @@ func main() {
 This example will print out at each iteration, slowly increasing over time.
 
 ## To Do
-* [ ] Implement `AllowN`
-* [ ] Implement `ReserveN`
-* [ ] Handle cancellations and deadlines properly.
+
+- [ ] Implement `AllowN`
+- [ ] Implement `ReserveN`
+- [ ] Handle cancellations and deadlines properly.
 
 ## License
 

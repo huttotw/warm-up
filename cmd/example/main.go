@@ -19,6 +19,7 @@ func main() {
 	// Create a new limiter that will increase in throughput according to (x/10)^2,
 	// with a burst up to 0 tokens.
 	l := warmup.NewLimiter(f, 0)
+	defer l.Stop()
 
 	i := 0
 	for {
